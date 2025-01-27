@@ -1,19 +1,25 @@
-import React from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
-//import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './pages/Home';
-// import About from './pages/About';
+import ReaderPage from './pages/Reader_page';
+import AuthPage from './pages/Users_page';
 import Header from './components/header';
-import Layout from './components/Layout';
+import Layout from './components/layout';
 
 
 const App = () => {
   return (
     <ChakraProvider>
-      <Layout>
-        <Header />
-        <Home />
-      </Layout>
+      <Router>
+        <Layout>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/reader" element={<ReaderPage />} />
+            <Route path="/auth" element={<AuthPage />} />
+          </Routes>
+        </Layout>
+      </Router>
     </ChakraProvider>
   );
 };
